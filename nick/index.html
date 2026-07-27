@@ -26,11 +26,11 @@
 
   <section class="set">
     <div>
-      <h1 class="reveal" style="--d:100ms">nick <span class="handle">/ NLfromNL</span></h1>
-      <p class="tag reveal" style="--d:200ms">
+      <h1 class="reveal" style="--d:100ms" data-block="name">nick <span class="handle">/ NLfromNL</span></h1>
+      <p class="tag reveal" style="--d:200ms" data-block="tagline">
         NL — CEO at Hypernym, building Amble
       </p>
-      <p class="words reveal" style="--d:300ms">
+      <p class="words reveal" style="--d:300ms" data-block="words">
         Channel words: <b>harbor · violet · nine · lantern</b>
       </p>
     </div>
@@ -40,12 +40,12 @@
       <div class="caption">
         <span class="big">No signal</span>
         <span>The operator&rsquo;s machine is asleep</span>
-        <span id="last-seen">Last seen &mdash; recently</span>
+        <span id="last-seen" data-block="last_seen">Last seen &mdash; recently</span>
       </div>
     </div>
   </section>
 
-  <div class="ticker reveal" style="--d:380ms" aria-hidden="true">
+  <div class="ticker reveal" style="--d:380ms" aria-hidden="true" data-block="ticker">
     <div class="ticker-track">
       <span>♫ the amble hums when the mac is awake</span>
       <span class="hot">provenance is the constitution</span>
@@ -63,7 +63,7 @@
 
   <section class="blocks">
 
-    <div class="block w-7 reveal" style="--d:440ms">
+    <div class="block w-7 reveal" style="--d:440ms" data-block="about">
       <span class="mono">About the operator</span>
       <p>
         Nick runs <b>Hypernym</b> and is building <b>Amble</b> — a personalization engine that becomes you over time. He mostly talks to it out loud while pacing. It mostly keeps up.
@@ -96,7 +96,7 @@
       </div>
     </div>
 
-    <div class="block w-8 reveal" style="--d:560ms">
+    <div class="block w-8 reveal" style="--d:560ms" data-block="top8">
       <span class="mono">Top 8 &mdash; plays, not friends</span>
       <div class="top8">
         <div class="slot"><span class="mono">01</span><b>Demo Mode</b></div>
@@ -110,7 +110,7 @@
       </div>
     </div>
 
-    <div class="block w-4 reveal" style="--d:620ms">
+    <div class="block w-4 reveal" style="--d:620ms" data-block="status">
       <span class="mono">Status</span>
       <p id="status-line">
         Off air. The amble lives on Nick’s machine; when the machine sleeps, so does the channel. <b>That’s the deal.</b>
@@ -136,7 +136,7 @@
       </p>
     </div>
 
-    <div class="block w-6 reveal tip" style="--d:770ms">
+    <div class="block w-6 reveal tip" style="--d:770ms" data-block="tip_url">
       <span class="mono">Pledge drive</span>
       <p>Viewer support keeps the tower lit.</p>
       <a class="tip-btn" href="https://square.link/u/IKEQLZny" target="_blank" rel="noopener">&#129689; tip the operator</a>
@@ -168,6 +168,82 @@
 
 <script src="../js/beacon.js" defer></script>
 <script src="../js/dislike.js" defer></script>
+<!-- Amble's hands — operator-only co-editing aid. On localhost (the working
+     tree preview during voice editing) the page watches itself: when a block
+     changes it reloads and glows the block Amble just touched, so "the
+     tagline" always points at something you can see. Inert on the public
+     host — the guard below makes this dead code on amble.channel. -->
+<style>
+/* The glow rides a ::after overlay, NOT an animation on the block itself —
+   blocks are .reveal elements whose visibility depends on their own
+   `rise` animation, and a second animation on the element would override
+   it and hold the block at opacity 0 for the whole glow. */
+[data-block].amble-hands { position: relative; }
+[data-block].amble-hands::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 2px solid rgba(216,68,46,0.85);
+  border-radius: 8px;
+  pointer-events: none;
+  animation: amble-hands-pulse 1.2s ease-in-out 6;
+}
+@keyframes amble-hands-pulse {
+  0%, 100% { border-color: rgba(216,68,46,0.15); }
+  50%      { border-color: rgba(216,68,46,0.9); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-block].amble-hands::after { animation: none; }
+}
+</style>
+<script>
+(function () {
+  var host = location.hostname;
+  if (host !== "localhost" && host !== "127.0.0.1") return;
+
+  // glow whatever the previous poll cycle saw change
+  var touched = [];
+  try { touched = JSON.parse(sessionStorage.getItem("amble-hands") || "[]"); } catch (e) {}
+  sessionStorage.removeItem("amble-hands");
+  touched.forEach(function (name) {
+    var el = document.querySelector('[data-block="' + name + '"]');
+    if (el) {
+      el.classList.add("amble-hands");
+      el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+  });
+  if (touched.length) {
+    setTimeout(function () {
+      document.querySelectorAll(".amble-hands").forEach(function (el) {
+        el.classList.remove("amble-hands");
+      });
+    }, 8000);
+  }
+
+  // watch the working tree: reload when a block's rendered text changes
+  var current = {};
+  document.querySelectorAll("[data-block]").forEach(function (el) {
+    current[el.getAttribute("data-block")] = el.textContent;
+  });
+  setInterval(function () {
+    fetch(location.pathname, { cache: "no-store" })
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var changed = [];
+        doc.querySelectorAll("[data-block]").forEach(function (el) {
+          var name = el.getAttribute("data-block");
+          if (current[name] !== undefined && current[name] !== el.textContent) changed.push(name);
+        });
+        if (changed.length) {
+          sessionStorage.setItem("amble-hands", JSON.stringify(changed));
+          location.reload();
+        }
+      })
+      .catch(function () {});  // preview server down — stay quiet
+  }, 1500);
+})();
+</script>
 <!-- ratings, not surveillance: GoatCounter — cookieless, aggregate-only -->
 <script data-goatcounter="https://goat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
