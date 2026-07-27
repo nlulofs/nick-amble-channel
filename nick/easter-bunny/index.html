@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Easter Bunny, 2077 — CH 001 · amble.channel</title>
+<meta name="description" content="A picture book co-written by Nick and his amble. Part two — part one had exactly one copy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/channel.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cellipse cx='50' cy='55' rx='26' ry='34' fill='none' stroke='%23e19b3c' stroke-width='7'/%3E%3C/svg%3E">
+<style>
+  /* The book rides the channel set: same night, same lamp. Spreads only. */
+  .book { max-width: 46rem; margin: 0 auto; }
+  .book-cover { text-align: center; padding: 4rem 0 2.5rem; }
+  .book-cover h1 {
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    font-weight: 620; letter-spacing: -0.02em; line-height: 1.05;
+  }
+  .book-cover h1 i { color: var(--amber-hot); font-weight: 430; }
+  .book-cover .byline { margin-top: 1rem; color: var(--cream-dim); font-style: italic; }
+  .book-cover .edition {
+    display: inline-block; margin-top: 1.4rem; padding: 0.35rem 0.9rem;
+    border: 1px solid var(--edge); border-radius: 999px;
+    color: var(--cream-dim);
+  }
+  .spread {
+    margin: 3.5rem 0; padding: 1.5rem;
+    background: var(--panel);
+    border: 1px solid var(--edge); border-radius: 14px;
+  }
+  .spread figure { margin: 0; }
+  .spread svg { display: block; width: 100%; height: auto; border-radius: 8px; background: var(--night-2); }
+  .spread .folio { display: block; margin: 1.1rem 0 0.4rem; color: var(--cream-dim); }
+  .spread p {
+    font-size: clamp(1.15rem, 1rem + 0.9vw, 1.45rem);
+    line-height: 1.5; text-wrap: pretty;
+  }
+  .spread p b { color: var(--amber-hot); font-weight: 600; }
+  .colophon {
+    margin: 4rem 0 3rem; padding-top: 2rem;
+    border-top: 1px dashed var(--edge);
+    color: var(--cream-dim); font-style: italic; text-align: center;
+  }
+  .colophon .mono { font-style: normal; display: block; margin-top: 1.2rem; }
+  .chalk { stroke: var(--cream); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .chalk-dim { stroke: #6b5c44; stroke-width: 2; fill: none; stroke-linecap: round; }
+  .glow-egg { stroke: var(--amber-hot); stroke-width: 3; fill: rgba(240, 180, 90, 0.08); filter: drop-shadow(0 0 6px rgba(240, 180, 90, 0.55)); }
+  .bunny { fill: var(--cream); }
+</style>
+</head>
+<body>
+
+<div class="wrap book">
+
+  <header class="station reveal" style="--d:0ms">
+    <a class="back" href="../">&larr; CH 001</a>
+    <span class="num">storytime broadcast</span>
+  </header>
+
+  <div class="book-cover reveal" style="--d:100ms">
+    <span class="mono">CH 001 presents</span>
+    <h1>The Easter Bunny, <i>2077</i></h1>
+    <p class="byline">written out loud by Nick &amp; his amble, one morning over coffee</p>
+    <span class="edition mono">part two &middot; unlimited copies &mdash; part one had exactly one</span>
+  </div>
+
+  <!-- Page 1 — the original, as everyone remembers it -->
+  <div class="spread reveal" style="--d:200ms">
+    <figure>
+      <svg viewBox="0 0 640 260" role="img" aria-label="A flat bunny slides under the crack of a door and bounces up on the other side">
+        <!-- door -->
+        <rect class="chalk" x="250" y="30" width="140" height="196" rx="4"/>
+        <circle class="chalk" cx="372" cy="130" r="5"/>
+        <!-- the crack, glowing -->
+        <line x1="250" y1="226" x2="390" y2="226" stroke="#f0b45a" stroke-width="5" stroke-linecap="round" filter="drop-shadow(0 0 5px rgba(240,180,90,0.6))"/>
+        <!-- flat bunny going under -->
+        <ellipse class="bunny" cx="230" cy="222" rx="46" ry="6"/>
+        <path class="chalk" d="M190 216 l-12 -14 M200 216 l-4 -16"/>
+        <!-- bounce arcs on the far side -->
+        <path class="chalk-dim" d="M410 220 q20 -50 44 0" stroke-dasharray="4 7"/>
+        <path class="chalk-dim" d="M462 220 q16 -38 36 0" stroke-dasharray="4 7"/>
+        <path class="chalk-dim" d="M506 220 q12 -28 28 0" stroke-dasharray="4 7"/>
+        <!-- popped-up bunny -->
+        <ellipse class="bunny" cx="553" cy="160" rx="5" ry="20" transform="rotate(-12 553 160)"/>
+        <ellipse class="bunny" cx="567" cy="160" rx="5" ry="20" transform="rotate(12 567 160)"/>
+        <ellipse class="bunny" cx="560" cy="196" rx="18" ry="24"/>
+        <line x1="60" y1="226" x2="600" y2="226" class="chalk-dim"/>
+      </svg>
+      <span class="mono folio">page one</span>
+      <p>The Easter Bunny never needed doors. He squished flat, slid under the crack, and popped up on the other side. Bounce. Bounce. Bounce.</p>
+    </figure>
+  </div>
+
+  <!-- Page 2 — the perfect world -->
+  <div class="spread reveal" style="--d:260ms">
+    <figure>
+      <svg viewBox="0 0 640 260" role="img" aria-label="A seamless city of perfect towers; a small bunny looks up from the street">
+        <rect class="chalk" x="70" y="60" width="90" height="166"/>
+        <rect class="chalk" x="180" y="30" width="110" height="196"/>
+        <rect class="chalk" x="310" y="80" width="80" height="146"/>
+        <rect class="chalk" x="410" y="45" width="120" height="181"/>
+        <rect class="chalk-dim" x="550" y="100" width="50" height="126"/>
+        <!-- ship, seamless -->
+        <ellipse class="chalk-dim" cx="520" cy="26" rx="34" ry="10"/>
+        <!-- ground, unbroken -->
+        <line x1="30" y1="226" x2="610" y2="226" stroke="var(--cream)" stroke-width="3" stroke-linecap="round"/>
+        <!-- small bunny looking up -->
+        <ellipse class="bunny" cx="36" cy="192" rx="2.5" ry="10" transform="rotate(-12 36 192)"/>
+        <ellipse class="bunny" cx="44" cy="192" rx="2.5" ry="10" transform="rotate(12 44 192)"/>
+        <ellipse class="bunny" cx="40" cy="210" rx="9" ry="12"/>
+      </svg>
+      <span class="mono folio">page two</span>
+      <p>The year is 2077, and the world is perfect now. Seamless ships. Hermetic houses. Walls without one single flaw. Nothing leaks. Nothing gaps.</p>
+    </figure>
+  </div>
+
+  <!-- Page 3 — easter, engineered away -->
+  <div class="spread reveal" style="--d:320ms">
+    <figure>
+      <svg viewBox="0 0 640 260" role="img" aria-label="The bunny pressed flat against a sealed wall that has no crack to slip under">
+        <!-- the wall, floor-sealed -->
+        <rect class="chalk" x="330" y="20" width="280" height="206"/>
+        <line x1="330" y1="226" x2="610" y2="226" stroke="var(--cream)" stroke-width="6" stroke-linecap="round"/>
+        <!-- bunny mid-squish, stopped: half flat, nowhere to go -->
+        <ellipse class="bunny" cx="270" cy="216" rx="52" ry="10"/>
+        <path class="chalk" d="M226 206 l-12 -16 M238 206 l-5 -18"/>
+        <!-- effort marks -->
+        <path class="chalk-dim" d="M322 190 l-10 8 M326 172 l-12 4 M322 208 l-10 2"/>
+        <line x1="30" y1="226" x2="330" y2="226" class="chalk-dim"/>
+      </svg>
+      <span class="mono folio">page three</span>
+      <p>Nobody banned Easter. Nobody had to. It got engineered away by accident &mdash; because <b>you can&rsquo;t squish to zero</b>.</p>
+    </figure>
+  </div>
+
+  <!-- Page 4 — outside for the first time -->
+  <div class="spread reveal" style="--d:380ms">
+    <figure>
+      <svg viewBox="0 0 640 260" role="img" aria-label="The bunny stands alone outside a sealed house at night, a full basket beside him">
+        <!-- sealed house -->
+        <path class="chalk" d="M370 110 l100 -60 l100 60 v116 h-200 z"/>
+        <rect class="chalk-dim" x="440" y="150" width="60" height="76"/>
+        <!-- warm window, unreachable -->
+        <rect x="520" y="140" width="30" height="30" fill="rgba(240,180,90,0.25)" stroke="#e19b3c" stroke-width="2"/>
+        <!-- standing bunny, upright, basket down -->
+        <ellipse class="bunny" cx="171" cy="148" rx="6" ry="24" transform="rotate(-10 171 148)"/>
+        <ellipse class="bunny" cx="189" cy="148" rx="6" ry="24" transform="rotate(10 189 148)"/>
+        <ellipse class="bunny" cx="180" cy="192" rx="20" ry="30"/>
+        <path class="chalk" d="M112 210 h34 l-5 14 h-24 z M118 210 q11 -14 22 0"/>
+        <!-- moon -->
+        <circle class="chalk-dim" cx="80" cy="50" r="22"/>
+        <line x1="30" y1="226" x2="610" y2="226" class="chalk-dim"/>
+      </svg>
+      <span class="mono folio">page four</span>
+      <p>He searched the whole world for one imperfection. Fresh caulk. Proud builders. Tight seams. And for the first time ever, the Easter Bunny just stood outside.</p>
+    </figure>
+  </div>
+
+  <!-- Page 5 — the drawn egg -->
+  <div class="spread reveal" style="--d:440ms">
+    <figure>
+      <svg viewBox="0 0 640 260" role="img" aria-label="A kid draws a glowing egg shape in chalk on a perfect wall">
+        <!-- the perfect wall -->
+        <rect class="chalk" x="60" y="20" width="520" height="206"/>
+        <!-- the chalk egg, glowing -->
+        <ellipse class="glow-egg" cx="320" cy="130" rx="58" ry="76" stroke-dasharray="10 6"/>
+        <!-- the kid, reaching up -->
+        <circle class="chalk" cx="440" cy="140" r="14"/>
+        <path class="chalk" d="M440 154 v40 M440 164 l-32 -26 M440 164 l20 14 M440 194 l-12 32 M440 194 l12 32"/>
+        <line x1="60" y1="226" x2="580" y2="226" class="chalk-dim"/>
+      </svg>
+      <span class="mono folio">page five</span>
+      <p>Then a kid picked up a piece of chalk and drew an egg on their perfect wall. And the drawn egg became an opening &mdash; bigger than any crack he had ever needed.</p>
+    </figure>
+  </div>
+
+  <!-- Page 6 — the city of drawn eggs -->
+  <div class="spread reveal" style="--d:500ms">
+    <figure>
+      <svg viewBox="0 0 640 260" role="img" aria-label="A night city where every perfect wall glows with a hand-drawn egg">
+        <rect class="chalk-dim" x="70" y="60" width="90" height="166"/>
+        <rect class="chalk-dim" x="180" y="30" width="110" height="196"/>
+        <rect class="chalk-dim" x="310" y="80" width="80" height="146"/>
+        <rect class="chalk-dim" x="410" y="45" width="120" height="181"/>
+        <rect class="chalk-dim" x="550" y="100" width="50" height="126"/>
+        <ellipse class="glow-egg" cx="115" cy="150" rx="16" ry="22"/>
+        <ellipse class="glow-egg" cx="235" cy="100" rx="18" ry="25"/>
+        <ellipse class="glow-egg" cx="350" cy="160" rx="14" ry="20"/>
+        <ellipse class="glow-egg" cx="470" cy="120" rx="20" ry="28"/>
+        <ellipse class="glow-egg" cx="575" cy="170" rx="11" ry="16"/>
+        <line x1="30" y1="226" x2="610" y2="226" class="chalk-dim"/>
+        <!-- bunny mid-bounce between buildings, home again -->
+        <ellipse class="bunny" cx="295" cy="192" rx="3.5" ry="13" transform="rotate(-12 295 192)"/>
+        <ellipse class="bunny" cx="305" cy="192" rx="3.5" ry="13" transform="rotate(12 305 192)"/>
+        <ellipse class="bunny" cx="300" cy="215" rx="12" ry="16"/>
+      </svg>
+      <span class="mono folio">page six</span>
+      <p>A crack is an accident. A drawn egg is a choice. By morning the city glowed with hand-drawn eggs on perfect walls, and Easter came back bigger than before &mdash; because this time, everyone let it in.</p>
+    </figure>
+  </div>
+
+  <div class="colophon reveal" style="--d:560ms">
+    <p>P.S. &mdash; the bunny&rsquo;s own house? All cracks, on purpose. Everybody needs at least one way for the strange thing to get in.</p>
+    <span class="mono">part one: one copy, last seen in an attic &middot; part two: spoken onto CH 001, 2026-07-24, before 7 AM</span>
+  </div>
+
+  <footer class="channel-footer">
+    <span><a href="../">&larr; back to CH 001</a></span>
+    <span class="mono"><a href="../../">amble.channel</a> &middot; a Hypernym thing</span>
+  </footer>
+
+</div>
+
+<!-- ratings, not surveillance: GoatCounter — cookieless, aggregate-only -->
+<script data-goatcounter="https://goat.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
