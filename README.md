@@ -13,7 +13,7 @@ their content. This is nick's.
 - `nick/easter-bunny/` — "The Easter Bunny, 2077," the first storytime
   broadcast. Hand-authored.
 
-**Serving wire-up pending:** amble.channel currently serves this content
-from a copy inside the platform repo. Until the reference lands (submodule
-or Actions assembly), the platform copy is what's live and this repo is the
-declared source of truth.
+**Wired (2026-07-26):** the platform's Pages workflow checks this repo out
+and overlays it at build time — what you see at amble.channel/nick/ is
+built from this repo's `main`, nothing else. Publishing is the amble
+engine's `ship()`: it pushes here, then pokes the platform rebuild.
