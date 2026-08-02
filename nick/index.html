@@ -15,8 +15,9 @@
    the platform's channel.css; these are the page-local overrides that turn
    the static into a feed. Everything here is scoped under .tv. */
 
-/* 3:2 to match the picture — the frame is filled edge to edge, no letterbox. */
-.tv { aspect-ratio: 3 / 2; background: #fbf9f6; }
+/* Square, to match the picture — the frame is filled edge to edge, no
+   letterbox. The hero grid centers the panel, so a shorter set is fine. */
+.tv { aspect-ratio: 1 / 1; background: #fbf9f6; }
 
 .tv .feed {
   position: absolute;
@@ -95,14 +96,14 @@ body.on-air .tv .glass { opacity: 0.55; }
         Channel words: <b>harbor · violet · nine · lantern</b>
       </p>
     </div>
-    <div class="tv reveal" style="--d:260ms" aria-label="Channel screen: the operator, dressed for the party">
-      <img class="feed" src="nick-party.webp" width="1600" height="1067" decoding="async"
-           alt="Nick in a battered black cowboy hat, plaid shirt open over a NO MO&rsquo; RULES tee, standing in a wood-and-brass speakeasy set — rebel rye and moonshine on the bar, a LIVE JAZZ TONIGHT 9PM poster, gramophone, saxophone, and a Time Heist route map pinned to the wall.">
+    <div class="tv reveal" style="--d:260ms" aria-label="Channel screen: the operator, out at the late table in North Beach">
+      <img class="feed" src="nick-now.webp" width="1200" height="1200" decoding="async"
+           alt="Nick in a Girl Next Door / North Beach trucker cap and a teal plaid shirt over a Muir Woods tee, sitting back in a green booth in a North Beach speakeasy at night. A jukebox glows beside him, a NORTH BEACH OPEN 24H sign burns red over posters for live jazz at midnight, and Coit Tower stands lit in the window. On the green felt table: cards, chips, whiskey, an hourglass — and clockwork gears spilling out from under it.">
       <div class="noise"></div>
       <div class="glass" aria-hidden="true"></div>
       <div class="caption">
-        <span class="big">Dressed for it</span>
-        <span>Off air &mdash; he&rsquo;s at the party</span>
+        <span class="big">Still out</span>
+        <span>North Beach &mdash; jazz, cards, midnight</span>
         <span id="last-seen" data-block="last_seen">Last seen &mdash; recently</span>
       </div>
     </div>
