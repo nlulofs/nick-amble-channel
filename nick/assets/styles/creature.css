@@ -1,0 +1,136 @@
+/* The amble — creature block styles. Canonical copy: channel/assets/
+ * creature.css (render_to_site() copies it into the site's styles/; the
+ * extension carries a byte-identical copy, test-enforced).
+ *
+ * Everything animated here is decorative presence — blink, bob, drift —
+ * and every animation dies under prefers-reduced-motion. Mood classes
+ * (amble-mood-awake / -drowsy / -asleep) are set by creature.js from
+ * time math, never from a stored value. */
+
+.block.creature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.amble-mount {
+  width: 100%;
+  max-width: 230px;
+  margin: 0 auto;
+}
+
+.amble-mount svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.amble-creature-art .creature-eye { transform-box: view-box; }
+.amble-mood-awake .creature-eye { animation: amble-blink 6.5s infinite; }
+.creature-volume-fallback { width: 100%; max-width: 360px; margin: auto; }
+.creature-volume-fallback svg { width: 100%; height: auto; display: block; }
+
+.creature-caption {
+  opacity: 0.75;
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+}
+
+/* the amble's own latest words — self-authored, drifts over time */
+.creature-lore {
+  font-style: italic;
+  opacity: 0.6;
+  font-size: 0.82em;
+  max-width: 240px;
+  text-align: center;
+}
+
+/* gen words — the birth certificate; growth is bounded from there */
+.creature-gen {
+  opacity: 0.35;
+  font-size: 0.68em;
+  letter-spacing: 0.06em;
+}
+
+.amble-nameplate {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  fill: currentColor;
+  opacity: 0.7;
+  font-family: inherit;
+}
+
+/* awake: alive at rest — slow breathing, occasional blink */
+.amble-mood-awake .amble-body-group {
+  animation: amble-breathe 4.5s ease-in-out infinite;
+}
+.amble-mood-awake .amble-eye {
+  animation: amble-blink 6.5s infinite;
+}
+
+/* drowsy: heavier, slower — nodding off mid-thought */
+.amble-mood-drowsy .amble-body-group {
+  animation: amble-nod 5.5s ease-in-out infinite;
+}
+
+/* asleep: nothing is broken, the little guy is just asleep */
+.amble-mood-asleep .amble-body-group {
+  animation: amble-breathe 7s ease-in-out infinite;
+}
+.amble-mood-asleep .amble-z {
+  animation: amble-drift 3.2s ease-in-out infinite;
+}
+.amble-mood-asleep .amble-z-1 { animation-delay: 0.5s; }
+.amble-mood-asleep .amble-z-2 { animation-delay: 1s; }
+
+/* the packed bindle waits by the door — a small hopeful sway */
+.amble-bindle {
+  animation: amble-sway 3.8s ease-in-out infinite;
+  transform-origin: 58px 40px;
+}
+
+/* handled trophies glint; dull ones don't — sheen is honest patina */
+.amble-glint {
+  animation: amble-glint 4s ease-in-out infinite;
+}
+
+@keyframes amble-breathe {
+  0%, 100% { transform: translate(120px, 108px) scale(var(--amble-scale, 1)); }
+  50%      { transform: translate(120px, 106px) scale(var(--amble-scale, 1)); }
+}
+@keyframes amble-blink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  96%           { transform: scaleY(0.08); }
+}
+@keyframes amble-nod {
+  0%, 100% { transform: translate(120px, 108px) scale(var(--amble-scale, 1)) rotate(0deg); }
+  60%      { transform: translate(120px, 111px) scale(var(--amble-scale, 1)) rotate(-2.5deg); }
+}
+@keyframes amble-drift {
+  0%   { transform: translate(0, 0);    opacity: 0; }
+  25%  { opacity: 0.6; }
+  100% { transform: translate(8px, -14px); opacity: 0; }
+}
+@keyframes amble-sway {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(2.5deg); }
+}
+@keyframes amble-glint {
+  0%, 100% { opacity: 0.25; }
+  50%      { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .amble-mood-awake .amble-body-group,
+  .amble-mood-awake .amble-eye,
+  .amble-mood-awake .creature-eye,
+  .amble-mood-drowsy .amble-body-group,
+  .amble-mood-asleep .amble-body-group,
+  .amble-mood-asleep .amble-z,
+  .amble-bindle,
+  .amble-glint {
+    animation: none;
+  }
+}
